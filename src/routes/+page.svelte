@@ -1,59 +1,99 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+  import Hexagon from "$lib/Components/Hexagon.svelte";
+  let category1 = ["EXPERIENCE", "PROJECTS", "SKILLS"];
+  let category2 = ["EDUCATION", "HOBBIES"];
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+  <title>Home</title>
+  <meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
+<div class="container">
+  <div class="introduction">
+    <div class="name">Muskan Jain</div>
+    <div class="designation">Software Development Engineer</div>
+    <div class="description">Hi I am Muskan, Software Development Engineer with a proven track record in Backend, Frontend, and Data technologies</div>
+  </div>
+  <div class="items">
+    <div class="category1">
+      {#each category1 as category}
+        <Hexagon text={category} />
+      {/each}
+    </div>
 
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
+    <div class="category2">
+      {#each category2 as category}
+        <Hexagon text={category} />
+      {/each}
+    </div>
+  </div>
+</div>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
+  .container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 40px 40px;
+  }
 
-	h1 {
-		width: 100%;
-	}
+  .introduction {
+    flex: 1;
+    /* border: 1px solid yellow; */
+    flex-direction: column;
+    display: flex;
+  }
 
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
+  .items {
+    flex: 1;
+    /* border: 1px solid rgb(47, 168, 170); */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+   
+  }
 
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
+  .name {
+    /* flex: 1; */
+    /* border: 1px solid rgb(174, 120, 135); */
+    font-weight: bold;
+    color: aliceblue;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 50px;
+   
+  }
+  .designation {
+    /* flex: 1; */
+    font-weight:lighter;
+    color: aliceblue;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+    /* border: 1px solid rgb(159, 63, 19); */
+    margin-top: 15px;
+  }
+  .description {
+    font-weight:lighter;
+    color: aliceblue;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    width: 50%;
+    /* border: 1px solid rgb(159, 63, 19); */
+    margin-top: 15px;
+  }
+
+  .category1{
+    /* flex: 1; */
+    /* border: 1px solid rgb(159, 63, 19); */
+    display: flex;
+    align-items: center;
+  }
+  .category2{
+    /* flex: 1; */
+    /* border: 1px solid rgb(159, 63, 19); */
+    display: flex;
+    align-items: center;
+    margin-top: -40px;
+  }
 </style>
